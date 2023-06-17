@@ -76,14 +76,7 @@ jobs:
 
       - name: Install python dependencies
         run: |
-          # --- Attempt for wxpython, but we don't have access to X display
-          # sudo apt-get install libgtk-3-dev
-          # sudo apt-get install git curl libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0 || true
-          # sudo apt-get install libnotify-dev || true
-          # sudo apt-get install libnotify4 || true
-          # pip install -U wxpython  || true
-          # pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-22.04 wxPython || true
-          # pip install -r _tools/travis_requirements.txt
+          echo "DISPLAY: $DISPLAY"
           sudo apt update
           sudo apt-get install -y \
               freeglut3 \
@@ -100,10 +93,12 @@ jobs:
               libunwind-dev \
               libwebkit2gtk-4.0-dev \
               libxtst-dev
-          # sudo apt-get install -y python3.8  python3.8-dev  libpython3.8-dev  python3.8-venv
-          # sudo apt-get install -y python3.9  python3.9-dev  libpython3.9-dev  python3.9-venv
-          sudo apt-get install -y python3.10 python3.10-dev libpython3.10-dev python3.10-venv
-          sudo apt-get install -y python3.11 python3.11-dev libpython3.11-dev python3.11-venv
+          if [[ $PY_VERSION == "3.10" ]]; then
+            sudo apt-get install -y python3.10 python3.10-dev libpython3.10-dev python3.10-venv
+          fi
+          if [[ $PY_VERSION == "3.11" ]]; then
+            sudo apt-get install -y python3.11 python3.11-dev libpython3.11-dev python3.11-venv
+          fi
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
