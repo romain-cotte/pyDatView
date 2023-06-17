@@ -37,4 +37,3 @@ class NetCDFFile(File):
             elif len(self.data[k].shape)==1:
                 dfs[k]=pd.DataFrame(data=self.data[k].values)
         return dfs
-

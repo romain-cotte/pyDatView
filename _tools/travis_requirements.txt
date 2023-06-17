@@ -2,7 +2,7 @@ openpyxl
 numpy
 pandas
 pyarrow # for parquet files
-matplotlib 
+matplotlib
 chardet
 scipy
 attrdict3

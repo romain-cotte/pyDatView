@@ -1,8 +1,10 @@
-openpyxl
+chardet
+matplotlib
+netcdf4
 numpy
+openpyxl
 pandas
 pyarrow # for parquet files
-matplotlib 
-chardet
 scipy
 wxpython
+xarray
